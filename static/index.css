@@ -1,0 +1,12 @@
+.jumbotron {
+	background: #0009a1;
+	margin-top: 150px;
+	height: 50vh;
+	color: white;
+}
+
+.jumboContent {
+	font-size: 40;
+	text-align: center;
+	font-family: "Trebuchet MS";
+}
