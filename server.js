@@ -10,14 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/randomicebreaker', (req, res) => {
-	setupPool();
-	pool.query('SELECT count(*) from icebreakers', function(err, result) {
-		ibIndex = result.rows[0].count;
-		ibIndex = Math.floor(Math.random() * ibIndex);
-		pool.query('SELECT * from icebreakers', function(err, result) {
-			res.send(result.rows[ibIndex]);
-			});
-		});
+	getRandomIB(res);
 });
 
 function setupPool() {
@@ -27,6 +20,18 @@ function setupPool() {
   		database: 'postgres',
   		password: 'mysecretpassword',
   		port: 5432
+	});
+}
+
+async function getRandomIB(response) {
+	setupPool();
+	await pool.query('SELECT count(*) from icebreakers', function(err, result) {
+		ibIndex = result.rows[0].count;
+		ibIndex = Math.floor(Math.random() * ibIndex);
+	});
+
+	pool.query('SELECT * from icebreakers', function(err, result) {
+		response.send(result.rows[ibIndex]);
 	});
 }
 	
