@@ -1,7 +1,7 @@
 {
-  	"user": "postgres",
-  	"host": "localhost",
-  	"database": "postgres",
-  	"password": "mysecretpassword",
+  	"user": "bvudffhcnatqqg",
+  	"host": "ec2-54-235-156-60.compute-1.amazonaws.com",
+  	"database": "d2jal26kolvtpp",
+  	"password": "4561a0d74fccfc0f926df6eb859e64b57dad1159d9467d16d3991adb58f36525",
   	"port": 5432
 }
