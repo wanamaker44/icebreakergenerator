@@ -6,16 +6,15 @@
 }
 
 .jumboContent {
-	font-size: 40;
+	font-size: 4em;
 	text-align: center;
-	font-family: ""Helvetica Neue",Helvetica,Arial,sans-serif";
 }
 
 .page-header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 42;
+	font-size: 4em;
 	margin-top: 6px;
 }
 
@@ -23,5 +22,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size:60;
+}
+
+.buttonDiv button {
+	font-size: 3em;
 }
