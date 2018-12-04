@@ -1,25 +1,34 @@
 <html>
 	<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="index.css"/>
-	<script>
-		function getAnIB() {
-			$.ajax({url: "/randomicebreaker", success: function(result){
-        		$("#jumboContent").html(result.ibtext);
-    		}});
-		}
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130368300-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
 
-		getAnIB();
-	</script>
+			gtag('config', 'UA-130368300-1');
+		</script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<script>
+			function getAnIB() {
+				$.ajax({url: "/randomicebreaker", success: function(result){
+					$("#jumboContent").html(result.ibtext);
+				}});
+			}
+
+			getAnIB();
+		</script>
 	</head>
 	<body>
 		<div class="page-header">Random Ice Breaker</div>
 		<div class="jumbotron"><div class="jumboContent" id="jumboContent"></div></div>
 		<div class="buttonDiv">
 			<button type="button" class="btn btn-default btn-lg" onclick=getAnIB()>
-  				Gimme Another!
+				Gimme Another!
 			</button>
 		</div>
 	</body>
