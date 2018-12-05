@@ -6,6 +6,10 @@ var ibIndex;
 var pool;
 app.use(express.static('static'));
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.listen(process.env.PORT || 3000);
 
 app.get('/', (req, res) => {
@@ -16,6 +20,14 @@ app.get('/randomicebreaker', (req, res) => {
 	getRandomIB(res);
 });
 
+app.post('/submiticebreaker', (req, res) => {
+	console.log(req.body.submission);
+
+	submitIntoDB(req.body.submission);
+
+	res.send();
+})
+
 function setupPool() {
 	var contents = fs.readFileSync("config.json");
 	var configFile = JSON.parse(contents);
@@ -25,6 +37,19 @@ function setupPool() {
   		database: configFile.database,
   		password: configFile.password,
   		port: configFile.port
+	});
+}
+
+async function submitIntoDB(submissionText) {
+	setupPool();
+	await pool.query("insert into ibSubmissions (ibtext) values ('" + submissionText + "');", function(err, result) {
+		console.log('adding submissin idea to db');
+		if (err) {
+			console.log('error so returning from submitting idea query function');
+			return;
+		} else {
+			console.log('no error adding submission to db');
+		}
 	});
 }
 

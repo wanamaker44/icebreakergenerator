@@ -18,12 +18,22 @@
 	margin-top: 6px;
 }
 
-.buttonDiv {
+.randomButtonDiv {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.buttonDiv button {
+.randomButtonDiv button {
 	font-size: 3em;
+}
+
+.submitButtonDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.submitButtonDiv button {
+	margin-left: auto;
+	margin-right: 15px;
 }
