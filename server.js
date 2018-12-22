@@ -42,8 +42,8 @@ function setupPool() {
 
 async function submitIntoDB(submissionText) {
 	setupPool();
-	await pool.query("insert into ibSubmissions (ibtext) values ('" + submissionText + "');", function(err, result) {
-		console.log('adding submissin idea to db');
+	await pool.query("insert into icebreakers (ibtext) values ('" + submissionText + "');", function(err, result) {
+		console.log('adding submission idea to db');
 		if (err) {
 			console.log('error so returning from submitting idea query function');
 			return;
@@ -55,7 +55,7 @@ async function submitIntoDB(submissionText) {
 
 async function getRandomIB(response) {
 	setupPool();
-	await pool.query('SELECT count(*) from icebreakers', function(err, result) {
+	await pool.query('SELECT count(*) from icebreakers where isActive=true', function(err, result) {
 		console.log('querying for count of rows in DB');
 		if (err) {
 			console.log('error so returning from count query function');
@@ -67,7 +67,7 @@ async function getRandomIB(response) {
 		}
 	});
 
-	pool.query('SELECT * from icebreakers', function(err, result) {
+	pool.query('SELECT * from icebreakers where isActive=true', function(err, result) {
 		console.log('querying for ice breaker row');
 		if(err) {
 			console.log('error in querying for ice breaker row');
